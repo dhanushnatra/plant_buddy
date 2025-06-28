@@ -1,0 +1,4 @@
+keras
+flask
+flask-cors
+pillow
