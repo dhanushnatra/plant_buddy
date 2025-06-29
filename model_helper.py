@@ -51,43 +51,20 @@ except Exception as e:
     raise
 
 def predict(img_path):
-    """
-    Predict plant disease from an image.
+    # Load and preprocess the image
+    img = Image.open(img_path).convert('RGB')
+    img_tensor = transform(img).unsqueeze(0).to(device)
+
+    # Load model weights
+    # model.load_state_dict(torch.load('plant_disease_model_epoch2.pth'))
+    # model.eval()
     
-    Args:
-        img_path (str): Path to the image file
-        
-    Returns:
-        dict: Dictionary containing prediction results with class index, 
-              class name, and confidence scores
-    """
-    try:
-        # Load and preprocess the image
-        img = Image.open(img_path).convert('RGB')
-        img_tensor = transform(img).unsqueeze(0).to(device)
-        
-        # Make prediction
-        with torch.no_grad():
-            output = model_loaded(img_tensor)
-            probabilities = torch.exp(output)  # Convert log probabilities to probabilities
-            pred_class = output.argmax(dim=1).item()
-            confidence = probabilities.max().item()
-        
-        # Get class name
-        predicted_class_name = classes[pred_class]
-        
-        print(f"Predicted class: {pred_class}")
-        print(f"Predicted class name: {predicted_class_name}")
-        print(f"Confidence: {confidence:.4f}")
-        
-        return {
-            'predicted_class_index': pred_class,
-            'predicted_class_name': predicted_class_name,
-            'confidence': confidence,
-            'all_probabilities': probabilities.squeeze().cpu().numpy().tolist()
-        }
-        
-    except FileNotFoundError:
-        raise FileNotFoundError(f"Image file not found: {img_path}")
-    except Exception as e:
-        raise RuntimeError(f"Prediction failed: {str(e)}")
+    with torch.no_grad():
+        output = model_loaded(img_tensor)
+        pred = output.argmax(dim=1)
+    plantname,disease_name = classes[pred.item()].split("___")
+    print("disease_name",disease_name)
+    return {
+        "plant_name": plantname,
+        "diseaseName": disease_name,
+    }

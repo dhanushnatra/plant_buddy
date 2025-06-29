@@ -1,0 +1,146 @@
+[
+  {
+    "disease_name": "Common_rust",
+    "plant_type": "Corn",
+    
+    "recommendations": [
+      "Remove and destroy severely infected leaves; sterilize tools between plants",
+      "Apply fungicides containing chlorothalonil or myclobutanil at first sign of pustules",
+      "Boost potassium levels with potash to strengthen cell walls against infection",
+      "Avoid overhead irrigation; water early morning so leaves dry quickly",
+      "Apply neem oil biweekly as organic preventative after infection subsides"
+    ]
+  },
+  {
+    "disease_name": "Healthy",
+    "plant_type": "Corn",
+    
+    "recommendations": [
+      "Address yellowing leaves immediately with balanced micronutrient supplement",
+      "Treat leaning/stalk damage by hilling soil around bases for support",
+      "Improve pollination by hand-shaking tassels if kernel development is uneven",
+      "Combat drought stress with deep watering and seaweed extract application",
+      "Remove pest-damaged sections promptly; apply BT spray for caterpillar control"
+    ]
+  },
+  {
+    "disease_name": "Early_blight",
+    "plant_type": "Potato",
+  
+    "recommendations": [
+      "Remove leaves with bullseye lesions immediately; bag and destroy infected material",
+      "Apply copper fungicide or Bacillus subtilis bioweekly, covering both leaf surfaces",
+      "Reduce watering frequency; allow soil surface to dry between irrigations",
+      "Stake plants to improve airflow and reduce humidity around foliage",
+      "Supplement with seaweed extract to strengthen plant defenses"
+    ]
+  },
+  {
+    "disease_name": "Late_blight",
+    "plant_type": "Potato",
+    
+    "recommendations": [
+      "Destroy all infected plants immediately (do not compost); report outbreaks if required",
+      "Apply mandipropamid or fluazinam fungicides at first sign of water-soaked lesions",
+      "Stop overhead watering completely; use soaker hoses for ground-level irrigation",
+      "Harvest tubers early if blight appears; cure in dry, dark location for 3 weeks",
+      "Solarize soil after harvest by tilling and covering with clear plastic for 6 weeks"
+    ]
+  },
+  {
+    "disease_name": "Healthy",
+    "plant_type": "Potato",
+    
+    "recommendations": [
+      "Address leafhopper damage with pyrethrin spray; remove curled leaves",
+      "Treat sun-scalded tubers by adding thicker mulch layer over hills",
+      "Correct hollow heart disorder with consistent boron-calcium supplementation",
+      "Revive heat-stressed plants with afternoon shade cloth and increased watering",
+      "Control vole damage with underground mesh barriers around planting area"
+    ]
+  },
+  {
+    "disease_name": "Early_blight",
+    "plant_type": "Tomato",
+    
+    "recommendations": [
+      "Remove infected leaves showing target spots; sterilize pruners between cuts",
+      "Spray chlorothalonil or copper fungicide weekly during humid weather",
+      "Apply baking soda solution (1 tbsp/gal water + soap) as organic alternative",
+      "Reduce nitrogen fertilization to limit succulent growth susceptible to infection",
+      "Improve root function with mycorrhizal inoculant to compensate for leaf loss"
+    ]
+  },
+  {
+    "disease_name": "Late_blight",
+    "plant_type": "Tomato",
+   
+    "recommendations": [
+      "Destroy entire plants at first sign of greasy lesions or white mold (do not compost)",
+      "Spray cymoxanil or famoxadone+cymoxanil mixtures within 24 hours of detection",
+      "Harvest mature green fruits immediately; disinfect with warm water bath",
+      "Remove all nearby volunteer tomatoes and potatoes within 200 feet",
+      "Apply biofungicides containing Trichoderma harzianum to protect new growth"
+    ]
+  },
+  {
+    "disease_name": "Bacterial_spot",
+    "plant_type": "Tomato",
+    
+    "recommendations": [
+      "Prune lesions with sterilized shears; disinfect tools after each plant",
+      "Spray copper-mancozeb combination products every 5-7 days during outbreaks",
+      "Reduce leaf wetness by improving airflow and watering only at soil level",
+      "Apply acibenzolar-S-methyl to activate systemic resistance pathways",
+      "Supplement with silicon to strengthen epidermal cells against invasion"
+    ]
+  },
+  {
+    "disease_name": "Leaf_mold",
+    "plant_type": "Tomato",
+    
+    "recommendations": [
+      "Remove infected leaves showing yellow upper surfaces and purple undersides",
+      "Apply chlorothalonil or difenoconazole sprays covering leaf undersides",
+      "Increase greenhouse temperature above 75°F to inhibit spore germination",
+      "Reduce relative humidity using fans and dehumidifiers below 80%",
+      "Treat with potassium bicarbonate fungicide (4 tsp/gal) every 10 days"
+    ]
+  },
+  {
+    "disease_name": "Septoria_leaf_spot",
+    "plant_type": "Tomato",
+    
+    "recommendations": [
+      "Remove spotted leaves immediately; destroy all fallen debris",
+      "Spray mancozeb or copper hydroxide weekly during wet periods",
+      "Improve air circulation with strategic pruning of inner branches",
+      "Apply hydrogen peroxide solution (1 tsp 35% food grade per cup water)",
+      "Supplement with silicon to increase leaf cuticle resistance"
+    ]
+  },
+  {
+    "disease_name": "Target_Spot",
+    "plant_type": "Tomato",
+    
+    "recommendations": [
+      "Prune leaves showing concentric rings; avoid excessive defoliation",
+      "Rotate azoxystrobin and difenoconazole applications every 7 days",
+      "Reduce canopy density by removing non-fruiting branches",
+      "Apply neem oil + potassium bicarbonate mixtures as organic option",
+      "Boost plant immunity with salicylic acid root drenches"
+    ]
+  },
+  {
+    "disease_name": "Healthy",
+    "plant_type": "Tomato",
+    
+    "recommendations": [
+      "Treat transplant shock with kelp extract and reduced sun exposure",
+      "Correct blossom-end rot with calcium nitrate foliar sprays",
+      "Revive wilted plants with deep root watering and temporary shading",
+      "Address herbicide drift with activated charcoal soil drenches",
+      "Manage root-knot nematodes with marigold interplanting"
+    ]
+  }
+]

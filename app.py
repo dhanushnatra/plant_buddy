@@ -1,60 +1,57 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify,render_template
+from flask import send_from_directory
 from model_helper import predict
 from werkzeug.utils import secure_filename
-from PIL import Image
 import os
 from flask_cors import CORS
 from flask import send_file
-from llama_helper import ollama_out
+from recommendation import get_recs
+from random import randint
+
+
 
 app = Flask(__name__)
 CORS(app)  # Enable CORS for all routes
 
-
-@app.route('/', methods=['GET'])
-def index():
-    """
+@app.route('/',methods=['GET'])
+def send_folder():
+    """ 
     Simple index route to check if the server is running.
-    """
-    return jsonify({"message": "Welcome to the Plant Buddy API!"}), 200
-
-
-@app.route('/get_audio',methods=['POST'])
-def get_audio():
-    """
-    Endpoint to handle audio file requests.
     
-    Expects a POST request with a text input and language parameter.
+    Returns:
+        Response: A welcome message.
     """
-    try:
-        data = request.json
-        text = data.get('text', '')
-        lang = data.get('lang', 'english')
-        
-        if not text:
-            return jsonify({'error': 'No text provided'}), 400
-        
-        # Here you would implement the logic to convert text to speech
-        # For now, we will just return a dummy response
-        audio_file_path = f"audio_{lang}.mp3"  # Placeholder for actual audio file generation
-        
-        return send_file(audio_file_path, mimetype='audio/mpeg')
+    return send_from_directory('static', 'index.html')
+
+
+@app.route('/<path:filename>', methods=['GET'])
+def send_static_file(filename):
+    """ 
+    Serve static files from the 'static' directory.
     
-    except Exception as e:
-        return jsonify({'error': str(e)}), 500
+    Args:
+        filename (str): The name of the file to serve.
+        
+    Returns:
+        Response: The static file response.
+    """
+    return send_from_directory('static', filename, as_attachment=True)
 
 
-@app.route('/predict', methods=['POST'])
+@app.route('/predict', methods=['POST','GET'])
 def predict_route():
-    """
+    """ 
     Endpoint to handle image prediction requests.
     
     Expects a POST request with an image file.
     """
-    if 'image' not in request.form:
+    if request.method == 'GET':
+        return ""
+    if 'image' not in request.files:
         return jsonify({'error': 'No file part in the request'}), 400
 
-    file = request.form['image']
+    file = request.files['image']
+    print(file.filename)
 
     if file.filename == '':
         return jsonify({'error': 'No selected file'}), 400
@@ -64,21 +61,25 @@ def predict_route():
         filename = secure_filename(file.filename)
         filepath = os.path.join('uploads', filename)
         file.save(filepath)
+        print(f"File saved to {filepath}")
         
-        # Predict using the TFLite model
         result = predict(filepath)
-        print(result)
         result.update({
-            "ollama_output": ollama_out(result['disease_name'])
+            "healthScore": randint(40, 70) if result.get("disease_name") else randint(70, 100)
         })
+
+        print(result)
+       
         # Clean up the saved file
         os.remove(filepath)
         
         return jsonify({
-            "disease_name": result['disease_name'],
-            "health_pct": result['health_pct'],
-            "disease_pct": result['disease_pct'],
-            "ollama_output": result['ollama_output']
+            'status': result.get('plant_name', 'unknown'),
+            'confidence': result.get('healthScore', 0),
+            'diseaseName': result.get('diseaseName',"Unknown"), 
+            'healthScore': result.get('healthScore'),
+            'recommendations': get_recs(result.get('diseaseName')),
+            'analysisDetails': result.get('analysisDetails', {}),
             }),200
     
     except Exception as e:

@@ -27,8 +27,7 @@ def translate_text(text, dest_language='english'):
     """
     translator = Translator()
     translated = translator.translate(text, dest=langs.get(dest_language, 'en'))
-    return translated.text
-
+    return translated["text"]
 
 def text_to_speech(text, lang='english'):
     """
@@ -45,3 +44,17 @@ def text_to_speech(text, lang='english'):
     filename = f"audio_{lang}.mp3"
     tts.save(filename)
     return filename 
+
+
+
+if __name__ == "__main__":
+    # Example usage
+    text = "Hello, how are you?"
+    translated_text = translate_text(text, 'hindi')
+    print(f"Translated Text: {translated_text}")
+    
+    audio_file = text_to_speech(translated_text, 'hindi')
+    print(f"Audio file saved as: {audio_file}")
+    
+    # You can play the audio file using any audio player
+    # For example, using pygame or any other library
