@@ -1,4 +1,4 @@
-from tflite_model import predict
+from model_helper import predict
 from sys import argv
 
 

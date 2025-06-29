@@ -1,5 +1,5 @@
 from flask import Flask, request, jsonify
-from tflite_model import predict
+from model_helper import predict
 from werkzeug.utils import secure_filename
 from PIL import Image
 import os
