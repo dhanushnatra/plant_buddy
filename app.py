@@ -92,8 +92,5 @@ def predict_route():
         return jsonify({'error': str(e)}), 500
     
 if __name__ == "__main__":
-    # Ensure the uploads directory exists
-    if os.path.exists('uploads') is False:
-        os.makedirs('uploads')
     
-    app.run(host='0.0.0.0', port=3000, debug=True)
+    app.run(host='0.0.0.0')
