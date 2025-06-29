@@ -1,4 +1,5 @@
-keras
+torch
+torchvision
 flask
 flask-cors
 pillow
