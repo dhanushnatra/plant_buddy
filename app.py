@@ -37,16 +37,22 @@ def send_static_file(filename):
     """
     return send_from_directory('static', filename, as_attachment=True)
 
-
-@app.route('/predict', methods=['POST','GET'])
+@app.route("/health", methods=['GET'])
+def health_check():
+    """ 
+    Health check endpoint to verify if the server is running.
+    
+    Returns:
+        Response: A simple message indicating the server is healthy.
+    """
+    return jsonify({"status": "healthy"}), 200
+@app.route('/predict', methods=['POST'])
 def predict_route():
     """ 
     Endpoint to handle image prediction requests.
     
     Expects a POST request with an image file.
     """
-    if request.method == 'GET':
-        return ""
     if 'image' not in request.files:
         return jsonify({'error': 'No file part in the request'}), 400
 
@@ -87,6 +93,7 @@ def predict_route():
     
 if __name__ == "__main__":
     # Ensure the uploads directory exists
+    if os.path.exists('uploads') is False:
+        os.makedirs('uploads')
     
-    
-    app.run(host='0.0.0.0',release=True)
+    app.run(host='0.0.0.0', port=3000, debug=True)
